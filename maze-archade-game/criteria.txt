@@ -1,0 +1,29 @@
+In this assignment, I have assumed that when the player holds the corresponding key, he can open the corresponding door and the door will be disappeared from on the map as it will keep opened all the time.
+If the player does not hold the corresponding key, nothing will happen which means door will still be closed and shown in the map.
+
+2. Appropriate  use   of  containers.
+
+I use List<String> colors; which can be found in the Key.class. I chose List to store all of the keys that exist in that grid square. The reason I do not use the “Set” container is because we can have multiple keys with the same color to be placed in the square. “Set” will ignore the duplicate keys in the grid square. 
+Again, I use List<String> keys to store all of the keys held by the player as well. This can be found in the Player.class. It is possible for the player to keep duplicate keys so we cannot use the “Set” container in this case. I do not choose the “Map” in this case as even if it can do fast searching. But still, there will be difficulties in setting the key for the Map.For example, if I store the red-coloured key in this way map.put(“Red”,"\033[31m"); then when the player get second red-coloured key, it will have map.put(“Red”,"\033[31m"); again. Then, when the user opens the red-coloured door, I cannot remove only one red-coloured key by calling map.remove(“Red”);.
+It is possible to store the duplicated red-coloured key by map.put(“Red” + 1,"\033[31m");,map.put(“Red” + 2,"\033[31m");. But still, if I want to remove only one red-coloured key, I can only loop and check if the key exists one by one like map.containsKey(“Red” + i) which is almost an O(n) operation. Another problem is, what if we do not have red-coloured key and do not have red-coloured door, then we will have an infinite loop in checking map.containsKey(“Red” + i).
+
+3. Clear  and distinct  class/interface/method responsibilities.
+
+ReadFile class is to handle all of the things about reading the files. Reader class contains InputReader class which is to handle all of the things related to reading the input from the user and also FileInputReader class is to read all of the input from the files. For example, if it is a vertical wall, what to do with it. MazeDisplay class is to display the maze for the maze game.
+
+Basically, in the Grid interface, we will have some behavior the grid might have such as a message. PlainGrid.class contains all of the things that the plain grid should have.
+GridDecorator abstract class is used to add the objects such as wall, door into the plain grid. Player class did include Movement class which is used to define how the player moves.
+
+4. Appropriate  error handling  and  logging.
+If   any  row  or column of the object  specified in  the  file  is   outside  the  bounds of  the maze, I will just warn the user on that and skip that object. If  there  is  no start location, I will warn the user and initialize a default player at row 0 , column 0. If there is more than one start location in the maze, I will warn the user and assume the only one player is the real player. Another player will just stand there and cannot move.If  there  is no  end location, I will warn the user and initialize a default end location at bottom right corner of the maze. If there is any NumberFormatException such as trying to parse string to integer, then I will just warn the user on that. This might happen when the object’s row or column that is specified in the file is a string.
+
+If  there   are  multiple  walls or  doors, or  a  wall  and   a  door,  at the  exact same  place.  Then, I will just let them be replaced by the latest object then warn the user on the replacement.
+
+5. Appropriate use  of the  Strategy  Pattern  and/or   Template  Method  Pattern.
+I have used 2 Strategy  Patterns and 1 template method pattern in the assignment.
+In the past, I would use an if-else statement to check the user’s action and perform the relevant movement(n/s/e/w). But in this case, I will use strategy  Pattern instead.Kindly observe the relationship between Maze class,Reader class, InputReader class, West.class, East.class, South.class and North.class. By using the Strategy  Pattern, I can avoid using if-else statement which makes the entire method hard to be implemented and also avoid the mixing of responsibilities in one method. Another Strategy  Pattern is used when reading the input from the file and storing the object. Kindly observe the relationship between Maze class,Reader class, FileInputReader class, VDoor.class, HDoor.class, HWall.class ,StartLocation.class etc.
+
+Template  Method  Pattern is used for the player movement. Kindly observe the relationship between Movement class, MoveUp class, MoveDown class, MoveRight class and MoveLeft class. In Movement class, I will define the overall operation when the player tries to move. While in those sub-classes like MoveUp class, I will redefine the checking condition before the player moves. As the way the player moves is the same all the time, just that the condition we checked each time is different.
+
+6. Appropriate  use of  the  Decorator  Pattern.
+Decorator  Pattern is used in this case as I want to dynamically add objects such as key, wall,  Door etc to my plain grid without altering the structure of my PlainGrid. A plain grid can have wall/key/door/a player etc inside.Kindly observe the relationship between Grid interface, GridDecorator abstract class, class Wall, Key, Door, Player, End and Empty. This is good as when I change the structure of the Wall, it won’t affect other classes such as Key.

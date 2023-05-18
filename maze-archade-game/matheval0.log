@@ -1,0 +1,16 @@
+Apr 09, 2022 10:39:57 PM edu.curtin.maze.VWall create
+WARNING: Row or column should be a integer, not string
+Apr 09, 2022 10:39:57 PM edu.curtin.maze.VDoor create
+WARNING: Trying to replace the current Wall grid at row:1 col:2 grid with vertical door !!!
+Apr 09, 2022 10:39:57 PM edu.curtin.maze.HDoor create
+WARNING: Trying to replace the current Wall grid at row:2 col:3 with horizontal door !!!
+Apr 09, 2022 10:39:57 PM edu.curtin.maze.HDoor create
+WARNING: Trying to replace the current Wall grid at row:2 col:3 with horizontal door !!!
+Apr 09, 2022 10:39:57 PM edu.curtin.maze.HDoor create
+WARNING: Trying to replace the current Wall grid at row:2 col:3 with horizontal door !!!
+Apr 09, 2022 10:39:57 PM edu.curtin.maze.AddKey create
+FINE: Insert these keys:[32m
+Apr 09, 2022 10:39:57 PM edu.curtin.maze.AddKey create
+FINE: Insert these keys:[31m
+Apr 09, 2022 10:40:05 PM edu.curtin.maze.Movement move
+INFO: front has space

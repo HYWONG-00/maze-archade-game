@@ -1,0 +1,14 @@
+Apr 09, 2022 8:46:17 PM edu.curtin.maze.Logging setupLogger
+INFO: My first log
+Apr 09, 2022 8:46:23 PM edu.curtin.maze.VDoor create
+WARNING: Trying to replace the current Wall grid at row:1 col:2 grid with vertical door !!!
+Apr 09, 2022 8:46:23 PM edu.curtin.maze.HDoor create
+WARNING: Trying to replace the current Wall grid at row:2 col:3 with horizontal door !!!
+Apr 09, 2022 8:46:23 PM edu.curtin.maze.HDoor create
+WARNING: Trying to replace the current Wall grid at row:2 col:3 with horizontal door !!!
+Apr 09, 2022 8:46:23 PM edu.curtin.maze.HDoor create
+WARNING: Trying to replace the current Wall grid at row:2 col:3 with horizontal door !!!
+Apr 09, 2022 8:46:23 PM edu.curtin.maze.AddKey create
+FINE: Insert these keys:[32m
+Apr 09, 2022 8:46:23 PM edu.curtin.maze.AddKey create
+FINE: Insert these keys:[31m
